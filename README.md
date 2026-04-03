@@ -1,88 +1,88 @@
-# Algorithms and Data Structures — Visual Studio Solution
+# Алгоритмы и структуры данных — Visual Studio Solution
 
-Collection of C++ implementations of classic algorithms and data structures. Each project is a separate Visual Studio console application.
-
----
-
-## Search Algorithms
-
-### Lab 01 — Linear Search (`lab_01_linear_search`)
-Sequential scan through an array comparing each element with a key. Returns `1` (found) or `0` (not found) and the iteration count. Reads input from `inp.txt`.
-
-### Lab 02 — Binary Search (`lab_02_binary_search`)
-First sorts the array with merge sort, then uses binary search on the sorted result. Reports the position of the found element and the number of comparisons. Reads from `inp.txt`.
-
-### Lab 03 — Interpolation Search (`lab_03_interpolation_search`)
-Search for sorted non-uniformly distributed arrays. Uses the linear interpolation formula to estimate the probable position of the key, reducing comparisons compared to binary search. Reads from `inp.txt`.
+Коллекция реализаций классических алгоритмов и структур данных на C++. Каждый проект — отдельное консольное приложение Visual Studio.
 
 ---
 
-## Sorting Algorithms (Internal)
+## Алгоритмы поиска
 
-### Lab 04 — Counting Sort (`lab_04_counting_sort`)
-Finds min/max of the array, allocates a count array for each value in the range, then reconstructs the sorted sequence. Works for integer arrays with a bounded range.
+### Лаб. 01 — Линейный поиск (`lab_01_linear_search`)
+Последовательный перебор элементов массива с поиском заданного ключа. Возвращает `1` (найден) или `0` (не найден) и количество итераций. Входные данные читаются из `inp.txt`.
 
-### Lab 05 — Merge Sort (`lab_05_merge_sort`)
-Classic recursive merge sort. Prints intermediate array state after each merge step for visualization. Reads from `inp.txt`.
+### Лаб. 02 — Бинарный поиск (`lab_02_binary_search`)
+Сначала сортирует массив сортировкой слиянием, затем выполняет бинарный поиск в отсортированном массиве. Выводит позицию найденного элемента и количество сравнений. Входные данные из `inp.txt`.
 
-### Lab 06 — Quick Sort (`lab_06_quick_sort`)
-Quicksort using the middle element as pivot and a two-pointer partition. Prints the array after each partition step. Reads from `inp.txt`.
-
-### Lab 07 — Quick Sort (Hoare / Lomuto) (`lab_07_quick_sort_hoar`)
-Quicksort with Lomuto partition scheme using the last element as pivot. The `posit()` function partitions in-place and returns the pivot's final index. Hardcoded test array `{9,3,7,1,5,8,2,6,4,0}`.
-
-### Lab 08 — Shell Sort (`lab_08_shell_sort`)
-Shell sort with gap sequence `h = n/2`, halved each pass. Includes a version with step-by-step printing and a vector-based version. Hardcoded test array.
-
-### Lab 09 — Bucket Sort (`lab_09_bucket_sort`)
-Groups numbers into buckets by digit count (using `log10`), sorts each bucket with selection sort, then merges all buckets into the final array. Reads from `inp.txt`.
+### Лаб. 03 — Интерполяционный поиск (`lab_03_interpolation_search`)
+Поиск в отсортированном массиве с неравномерным распределением элементов. Использует формулу линейной интерполяции для оценки вероятной позиции ключа, что сокращает количество сравнений по сравнению с бинарным поиском. Входные данные из `inp.txt`.
 
 ---
 
-## Sorting Algorithms (External)
+## Алгоритмы сортировки (внутренние)
 
-### Lab 10 — External Sort (`lab_10_external_sort`)
-External merge sort for data that does not fit in memory. Implements three strategies:
-- **Natural merge** (`marge`) — merges naturally ordered runs from two files.
-- **Balanced merge** (`marge_mod`) — splits into two temporary files, merges back.
-- **Fibonacci polyphase sort** (`strange_sort`) — distributes runs following Fibonacci proportions across multiple tapes for fewer merge passes.
+### Лаб. 04 — Сортировка подсчётом (`lab_04_counting_sort`)
+Находит минимум и максимум массива, создаёт массив счётчиков для каждого значения в диапазоне, затем восстанавливает отсортированную последовательность. Работает для массивов целых чисел с ограниченным диапазоном значений.
 
-Reads from `inp.txt` / `inp_N.txt`.
+### Лаб. 05 — Сортировка слиянием (`lab_05_merge_sort`)
+Классическая рекурсивная сортировка слиянием. После каждого шага слияния выводит промежуточное состояние массива для наглядности. Входные данные из `inp.txt`.
 
----
+### Лаб. 06 — Быстрая сортировка (`lab_06_quick_sort`)
+Быстрая сортировка с выбором среднего элемента в качестве опорного и разбиением двумя указателями. После каждого шага разбиения выводит массив. Входные данные из `inp.txt`.
 
-## String Matching Algorithms
+### Лаб. 07 — Быстрая сортировка (схема Хоара / Ломуто) (`lab_07_quick_sort_hoar`)
+Быстрая сортировка со схемой разбиения Ломуто: опорный элемент — последний в подмассиве. Функция `posit()` разбивает массив на месте и возвращает итоговый индекс опорного элемента. Тестовый массив задан в коде: `{9,3,7,1,5,8,2,6,4,0}`.
 
-### Lab 11 — Z-Algorithm (`lab_11_z_algorithm`)
-Builds the Z-array for the combined string `pattern + "$" + text`. Each `Z[i]` gives the length of the longest substring starting at `i` that matches a prefix of the combined string. Prints all match positions. Hardcoded pattern `"aba"` in text `"abaorpaba"`.
+### Лаб. 08 — Сортировка Шелла (`lab_08_shell_sort`)
+Сортировка Шелла с последовательностью шагов `h = n/2`, уменьшающихся вдвое на каждом проходе. Включает версию с пошаговым выводом и версию на векторах. Тестовый массив задан в коде.
 
-### Lab 12 — Knuth-Morris-Pratt (`lab_12_kmp`)
-KMP pattern matching. Precomputes the failure function (prefix table) for the pattern, then scans the text in a single pass, never backtracking. Counts non-overlapping occurrences. Hardcoded pattern `"abcabca"`.
-
-### Lab 13 — Boyer-Moore (`lab_13_boyer_moore`)
-Boyer-Moore string search. Builds a bad-character shift table from the reversed pattern, then slides the pattern right-to-left, skipping sections using the table. Hardcoded pattern `"aababa"` in text `"waababaababafh"`.
+### Лаб. 09 — Блочная сортировка (`lab_09_bucket_sort`)
+Группирует числа в корзины по количеству цифр (через `log10`), сортирует каждую корзину сортировкой выбором, затем объединяет корзины в итоговый массив. Входные данные из `inp.txt`.
 
 ---
 
-## Data Structures
+## Алгоритмы сортировки (внешние)
 
-### Lab 14 — Singly Linked List (`lab_14_linked_list`)
-Linked list with `Node` (data + next pointer) and `List` (head/tail) structs. Implements `push_back()` for appending elements and traversal for printing.
+### Лаб. 10 — Внешняя сортировка (`lab_10_external_sort`)
+Внешняя сортировка слиянием для данных, не помещающихся в оперативную память. Реализованы три стратегии:
+- **Естественное слияние** (`marge`) — сливает естественно упорядоченные серии из двух файлов.
+- **Сбалансированное слияние** (`marge_mod`) — разбивает данные на два временных файла и сливает обратно.
+- **Полифазная сортировка по Фибоначчи** (`strange_sort`) — распределяет серии по лентам в пропорциях Фибоначчи для уменьшения числа проходов слияния.
 
-### Lab 15 — Stack (`lab_15_stack`)
-Array-based stack with `push()`, `pop()`, `print()`, and overflow detection. Constructor accepts capacity. Reads initial elements from `inp.txt`, pops twice, then pushes a new value.
-
-### Lab 16 — Queue (`lab_16_queue`)
-Queue (FIFO) built on a linked list. Implements `put()` (enqueue), `get()` (dequeue), `remove(int)` to delete all nodes with a given value, and `print()`. Tests with values `1,2,3,3,3,4,3,5` and removes all `3`s.
+Входные данные из `inp.txt` / `inp_N.txt`.
 
 ---
 
-## Excluded from repository (.gitignore)
+## Алгоритмы поиска подстрок
 
-| Folder | Reason |
-|--------|--------|
-| `ConsoleApplication49/` | Incomplete — external sort stub with a buggy print helper |
-| `Hash_table/` | Empty — only VS template "Hello World" |
-| `MegaOutsidesort/` | Empty — variable declarations with no sorting logic |
-| `bloch/` | Empty — only VS template "Hello World" |
-| `x64/`, `Debug/`, `Release/` | Build artifacts |
+### Лаб. 11 — Z-функция (`lab_11_z_algorithm`)
+Строит Z-массив для строки `паттерн + "$" + текст`. Значение `Z[i]` — длина наибольшей подстроки, начинающейся с позиции `i` и совпадающей с префиксом объединённой строки. Выводит все позиции вхождений. Тестовые данные: паттерн `"aba"` в тексте `"abaorpaba"`.
+
+### Лаб. 12 — Алгоритм Кнута–Морриса–Пратта (`lab_12_kmp`)
+Поиск подстроки методом КМП. Предварительно строит функцию отказов (префикс-функцию) для паттерна, затем за один проход сканирует текст без возвратов. Подсчитывает непересекающиеся вхождения. Тестовый паттерн: `"abcabca"`.
+
+### Лаб. 13 — Алгоритм Бойера–Мура (`lab_13_boyer_moore`)
+Поиск подстроки методом Бойера–Мура. Строит таблицу смещений по плохому символу из перевёрнутого паттерна, затем скользит по тексту справа налево, пропуская участки по таблице. Тестовые данные: паттерн `"aababa"` в тексте `"waababaababafh"`.
+
+---
+
+## Структуры данных
+
+### Лаб. 14 — Односвязный список (`lab_14_linked_list`)
+Список на основе структур `Node` (данные + указатель на следующий) и `List` (голова/хвост). Реализованы `push_back()` для добавления элементов в конец и обход для вывода.
+
+### Лаб. 15 — Стек (`lab_15_stack`)
+Стек на массиве с методами `push()`, `pop()`, `print()` и проверкой переполнения. Конструктор принимает ёмкость стека. Читает начальные элементы из `inp.txt`, дважды вызывает `pop()`, затем добавляет новый элемент.
+
+### Лаб. 16 — Очередь (`lab_16_queue`)
+Очередь (FIFO) на основе связного списка. Реализованы `put()` (добавить), `get()` (извлечь), `remove(int)` (удалить все узлы с заданным значением) и `print()`. Тест: добавляются значения `1,2,3,3,3,4,3,5`, затем удаляются все `3`.
+
+---
+
+## Исключено из репозитория (.gitignore)
+
+| Папка | Причина |
+|-------|---------|
+| `ConsoleApplication49/` | Неполная реализация — заготовка внешней сортировки с багом в функции вывода |
+| `Hash_table/` | Пусто — только шаблон VS «Hello World» |
+| `MegaOutsidesort/` | Пусто — объявления переменных без логики сортировки |
+| `bloch/` | Пусто — только шаблон VS «Hello World» |
+| `x64/`, `Debug/`, `Release/` | Артефакты сборки |
